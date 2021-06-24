@@ -1,8 +1,33 @@
-import { Fragment } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import Header from './components/Header';
 import Formulario from './components/Formulario';
 
 function App() {
+
+  const [busqueda, guardarBusqueda] = useState({
+    ciudad: "",
+    pais: "",
+  });
+
+  const [consulta, guardarConsulta] = useState(false)
+
+  const { ciudad, pais } = busqueda;
+
+  useEffect(() => {
+    
+    const apiKey = 'ffe409fec4a70cd0c47d6bc695029b3a';
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}`
+    const consultarApi = async() => {
+
+    }
+
+
+    consultarApi()
+
+    guardarConsulta(false)
+  }, [consulta])
+
+
   return (
     <Fragment>
       <Header 
@@ -13,10 +38,13 @@ function App() {
         <div className="container">
           <div className="row">
             <div className="col m6 s12">
-              <Formulario />
+              <Formulario 
+                busqueda={busqueda} 
+                guardarBusqueda={guardarBusqueda} 
+                guardarConsulta={guardarConsulta} 
+              />
             </div>
             <div className="col m6 s12">
-              
             </div>
           </div>
         </div>
