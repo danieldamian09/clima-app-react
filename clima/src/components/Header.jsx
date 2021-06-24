@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export default function Header({title}) {
     return (
         <nav>
@@ -6,4 +8,8 @@ export default function Header({title}) {
             </div>
         </nav>
     )
+}
+
+Header.propTypes = {
+    title: PropTypes.string.isRequired
 }
